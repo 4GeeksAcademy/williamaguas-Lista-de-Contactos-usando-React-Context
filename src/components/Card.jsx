@@ -17,21 +17,21 @@ const Card = ({informacion,refrescar}) => {
     return (
         <div>
             <h1>
-                <div className="card mb-3" style={{ maxWidth: "540px" }} >
+                <div className="card mb-3" style={{ maxWidth: "940px" }} >
                     <div className="row g-0">
                         <div className="col-md-4">
-                            <img src="https://i.pinimg.com/1200x/6e/59/95/6e599501252c23bcf02658617b29c894.jpg" className="img-fluid rounded-start" alt="..." />
+                            <img src="https://i.pinimg.com/736x/5f/c2/08/5fc208cf051c99275f286ec2aeeb6d92.jpg" className="img-fluid rounded-start" alt="..." />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
-                                <h5 className="card-title">nombre: {informacion.name}</h5>
-                                <p className="card-text">telefono: {informacion.phone}</p>
-                                <p className="card-text">direccion: {informacion.address}</p>
-                                <p className="card-text">correo: {informacion.email}</p>
+                                <h1 className="card-title"><i class="far fa-laugh-wink"></i> NOMBRE: {informacion.name}</h1>
+                                <p className="card-text"><i class="fas fa-phone"></i> TELEFONO: {informacion.phone}</p>
+                                <p className="card-text"><i class="fas fa-map-marker-alt"></i> DIRECCION: {informacion.address}</p>
+                                <p className="card-text"><i class="fas fa-envelope"></i> CORREO: {informacion.email}</p>
                                 <Link to={'/edit/' + informacion.id}>
                                     <button><i class="far fa-edit"></i></button>
                                 </Link>
-                                <button onClick={() => deleteContact(informacion.id)}><i class="fas fa-trash"></i></button>
+                                <button onClick={() => deleteContact(informacion.id)}><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
