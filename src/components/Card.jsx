@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Card = (props) => {
+const Card = ({informacion,refrescar}) => {
 
     const deleteContact = async (contactId) => {
         try {
@@ -8,6 +8,7 @@ const Card = (props) => {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             })
+            refrescar()
         }
         catch (error) {
             console.error("errorAlEliminar", error);
@@ -23,16 +24,14 @@ const Card = (props) => {
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
-                                <h5 className="card-title">nombre: {props.informacion.name}</h5>
-                                <p className="card-text">telefono: {props.informacion.phone}</p>
-                                <p className="card-text">direccion: {props.informacion.address}</p>
-                                <p className="card-text">correo: {props.informacion.email}</p>
-                                <Link to={'/edit/' + props.informacion.id}>
+                                <h5 className="card-title">nombre: {informacion.name}</h5>
+                                <p className="card-text">telefono: {informacion.phone}</p>
+                                <p className="card-text">direccion: {informacion.address}</p>
+                                <p className="card-text">correo: {informacion.email}</p>
+                                <Link to={'/edit/' + informacion.id}>
                                     <button><i class="far fa-edit"></i></button>
                                 </Link>
-
-
-                                <button onClick={()=>deleteContact(props.informacion.id)}><i class="fas fa-trash"></i></button>
+                                <button onClick={() => deleteContact(informacion.id)}><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
