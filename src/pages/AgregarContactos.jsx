@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { useNavigate} from "react-router-dom";
 const AgregarContactos = () => {
+    const navigate = useNavigate()
     const { store, dispatch } = useGlobalReducer()
     let [data, setData] = useState({
         name: "", email: "", phone: "", address: ""
@@ -16,9 +18,18 @@ const AgregarContactos = () => {
         fetch("https://playground.4geeks.com/contact/agendas/william/contacts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({...data,agenda_slug:"william"})
+            body: JSON.stringify({ ...data, agenda_slug: "william" })
         })
-        
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                navigate("/")
+
+            })
+            .catch(error => {
+                console.log(error);
+
+            })
     }
     return (
         <div>
